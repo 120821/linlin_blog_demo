@@ -1,0 +1,27 @@
+<h3>琳琳的博客</h3>
+<p>博客总数: <%= @total_count %></p>
+<%= paginate @blogs %>
+<%= link_to "新建", new_blog_path if session[:current_user] == "admin" %><br/>
+<%= form_tag '', method: :get do %>
+  <!--
+  <label class="control-label">
+    标题
+    <i data-toggle="popover" data-togger="hover" data-container='body' data-html='true' title='说明：根据标题内关键词模糊查询' data-content='输入xxxxx' class='fa fa-question-circle' > </i>
+    <i data-toggle="popover" data-togger="hover" data-container='body' data-html='true' title='说明：根据文章内关键词模糊查询' data-content='输入xxxxx' class='fa fa-question-circle' > </i>
+    <%#= text_field_tag :blog_title, params[:blog_title] %>
+  </label>
+  -->
+  <label class="control-label">
+    根据标题或内容模糊查询:
+    <%= text_field_tag :blog_content, params[:blog_content] %>
+  </label>
+  <%= submit_tag raw("&#xf002; 查询"), class: "form_submit", class: 'btn btn-secondary btn-sm fa-input' %>
+<% end %>
+<!--
+<%# @top_blogs.each do |blog| %>
+  <a href="/blogs/<%#= blog.id %>" class="title"><%#= blog.id %>  <%#= blog.title %>
+  </a></br>
+<%# end %>
+-->
+
+<br/>
